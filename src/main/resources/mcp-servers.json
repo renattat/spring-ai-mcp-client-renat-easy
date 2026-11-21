@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "cmd.exe",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:\\Users\\New\\Desktop\\Udemy\\From_Java_Dev_To_AI_Engineer_Spring_AI_Fast_Track\\mcp"
+      ]
+    }
+  }
+}
