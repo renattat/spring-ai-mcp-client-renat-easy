@@ -1,0 +1,35 @@
+{
+  "mcpServers": {
+    "renat-spring-ai-mcp": {
+      "command": "C:/Users/New/.jdks/openjdk-26.0.2.1/bin/java.exe",
+      "args": [
+        "-jar",
+        "C:/Users/New/Desktop/Udemy/From_Java_Dev_To_AI_Engineer_Spring_AI_Fast_Track/projects/mcpserverstdioeazy/target/mcpserverstdioeazy-0.0.1-SNAPSHOT.jar"
+      ]
+    },
+    "filesystem": {
+      "command": "cmd.exe",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:\\Users\\New\\Desktop\\Udemy\\From_Java_Dev_To_AI_Engineer_Spring_AI_Fast_Track\\mcp"
+      ]
+    },
+    "github": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    }
+  }
+}
