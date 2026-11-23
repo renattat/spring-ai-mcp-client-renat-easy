@@ -1,12 +1,10 @@
 package com.renat.mcpclienteazy.controller;
 
 import com.renat.mcpclienteazy.util.ToolUtil;
-import io.modelcontextprotocol.client.McpClient;
 import io.modelcontextprotocol.client.McpSyncClient;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.tool.ToolCallback;
-import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
