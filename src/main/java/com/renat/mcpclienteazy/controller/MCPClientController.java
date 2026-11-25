@@ -8,6 +8,8 @@ import org.springframework.ai.tool.ToolCallback;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
@@ -35,6 +37,23 @@ public class MCPClientController {
         return chatClient
                 .prompt(message + " My username is " + username)
                 .tools(toolCallBacks)
+                .call().content();
+    }
+
+    @GetMapping("/summarize-ticket")
+    public String summarizeTickets(@RequestHeader("username") String username) {
+        ToolCallback[] toolCallbacks = ToolUtil.selectToolsFor(mcpClients, "helpdesk-mcp-server", null);
+        return chatClient.prompt()
+                .system("""
+                        You orchestrate the 'summarizeTickets' tool. The tool already returns a complete,
+                        customer-ready summary that was generated for this exact request. Return that tool
+                        output to the user EXACTLY as-is: do not rewrite, reformat, shorten, expand,
+                        rephrase, or add any commentary of your own. Your reply must be the verbatim tool
+                        response and nothing else.
+                        """)
+                .user("Summrize all of my support tickets, my username is " + username)
+                .tools(toolCallbacks)
+                .toolContext(Map.of("progressTocken", UUID.randomUUID().toString()))
                 .call().content();
     }
 

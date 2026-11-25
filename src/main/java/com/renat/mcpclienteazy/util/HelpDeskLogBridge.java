@@ -11,7 +11,7 @@ public class HelpDeskLogBridge {
 
     private static final Logger log = LoggerFactory.getLogger(HelpDeskLogBridge.class);
 
-    @McpLogging(clients = "filesystem")
+    @McpLogging(clients = "mcpserverremoteeazy")
     public void onServerLog(McpSchema.LoggingLevel level, String source, String message) {
         log.info("Received log form server - Level: {}, Source: {}, Message: {}", level, source, message);
     }
